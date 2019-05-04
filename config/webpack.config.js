@@ -457,7 +457,7 @@ module.exports = function(webpackEnv) {
                     modules: false,
                     javascriptEnabled: true,
                     modifyVars: {
-                      "@primary-color": "#f90022"
+                      "@primary-color": "#f9d21f"
                     }
                   }
                 }

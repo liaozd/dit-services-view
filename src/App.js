@@ -1,14 +1,18 @@
-import React from 'react';
-import { Button } from 'antd'
-import './App.css';
+import React from "react";
+import { Layout } from "antd";
+
+import { HeaderView } from "./layouts/Header";
+import { SubtitleView } from "./components/Subtitle";
+import { FooterView } from "./layouts/Footer";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Button>Button Test</Button>
-      </header>
-    </div>
+    <Layout className="layout">
+      <HeaderView />
+      <SubtitleView />
+      <FooterView />
+    </Layout>
   );
 }
 
