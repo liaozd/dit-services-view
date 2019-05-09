@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Layout, Upload, Button, Icon } from "antd";
+import { Layout, Upload, Button, message, Icon } from "antd";
 import axios from "axios";
 
 const {Content} = Layout;
@@ -49,12 +49,25 @@ export class SubtitleView extends Component {
     });
   };
 
+  beforeUpload = (file) => {
+    const isXML = file.type === 'text/xml';
+    if (!isXML) {
+      message.error('You can only upload XML file!');
+    }
+    const isLt2M = file.size / 1024 / 1024 < 2;
+    if (!isLt2M) {
+      message.error('XML file must be smaller than 2MB!');
+    }
+    return isXML && isLt2M;
+  };
+
   render() {
     return (
       <Content style={{padding: "5% 5%"}}>
         <div style={{background: "#fff", padding: 100, minHeight: 280, textAlign: "center"}}>
           <Upload customRequest={this.handleRequest}
                   onRemove={this.onRemove}
+                  beforeUpload={this.beforeUpload}
                   fileList={this.state.fileList}
           >
             {this.state.fileList.length === 0 ?
